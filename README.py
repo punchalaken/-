@@ -15,18 +15,18 @@ class Student:
         self.__class__.all_students.append(self)
 
     def cours_in_progress(self, course_name):
-        self.courses_in_progress.append(course_name)
+        self.courses_in_progress.append(course_name.title())
 
     def finish_courses(self, course_name):
-        self.finished_courses.append(course_name)
+        self.finished_courses.append(course_name.title())
 
     def rate_lec(self, lectur, course, grade):
         if isinstance(lectur, Lecturer) and course in lectur.courses_attached and course in self.courses_in_progress:
             if 1 <= grade <= 10 and grade % 1 == 0:
                 if course in lectur.grades:
-                    lectur.grades[course] += [grade]
+                    lectur.grades[course.title()] += [grade]
                 else:
-                    lectur.grades[course] = [grade]
+                    lectur.grades[course.title()] = [grade]
             else:
                 print('Пожалуйста, введите целое число от 1 до 10.')
 
@@ -119,8 +119,11 @@ other_student.cours_in_progress('Python')
 other_student.cours_in_progress('Английский для IT-специалистов')
 
 oleg_buligin = Lecturer('Олег', 'Булыгин')
-
 oleg_buligin.courses_attached += ['Python']
+
+nikita_suslov = Lecturer('Никита', 'Суслов')
+nikita_suslov.courses_attached += ['Python']
+
 
 dmitriy_losev = Reviewer('Дмитрий', 'Лосев')
 dmitriy_losev.courses_attached += ['Python']
@@ -144,6 +147,10 @@ some_student.rate_lec(oleg_buligin, 'Python', 8)
 some_student.rate_lec(oleg_buligin, 'Python', 4)
 some_student.rate_lec(oleg_buligin, 'Python', 5)
 some_student.rate_lec(oleg_buligin, 'Python', 3)
+some_student.rate_lec(nikita_suslov, 'Python', 3)
+some_student.rate_lec(nikita_suslov, 'Python', 8)
+some_student.rate_lec(nikita_suslov, 'Python', 4)
+some_student.rate_lec(nikita_suslov, 'Python', 5)
 some_student.rate_lec(oleg_buligin, 'ООП и работа с API', 9)
 some_student.rate_lec(oleg_buligin, 'ООП и работа с API', 10)
 some_student.rate_lec(oleg_buligin, 'ООП и работа с API', 9)
@@ -188,3 +195,5 @@ print()
 print(oleg_buligin)
 print()
 print(dmitriy_losev)
+print()
+print(oleg_buligin > nikita_suslov)
