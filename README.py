@@ -126,9 +126,6 @@ dmitriy_losev = Reviewer('Дмитрий', 'Лосев')
 dmitriy_losev.courses_attached += ['Python']
 dmitriy_losev.courses_attached += ['ООП и работа с API']
 
-evgeniy_slow = Reviewer('Дмитрий', 'Медленный')
-evgeniy_slow.courses_attached += ['Python']
-
 dmitriy_losev.rate_hw(some_student, 'Python', 10)
 dmitriy_losev.rate_hw(some_student, 'Python', 3)
 dmitriy_losev.rate_hw(some_student, 'Python', 10)
